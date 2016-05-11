@@ -1,7 +1,7 @@
 {
-  "name": "base",
+  "name": "balsa-app",
   "version": "1.0.0",
-  "description": "Mowe Foundation Base",
+  "description": "Mowe Balsa App",
   "main": "GulpFile.js",
   "devDependencies": {
     "browser-sync": "^2.12.5",
@@ -29,11 +29,7 @@
     "foundation",
     "base"
   ],
-  "author": {
-    "name": "Eduardo Barros",
-    "email": "dbajrs@noibe.com",
-    "url": "dbarjs.noibe.com"
-  },
+  "author": "Eduardo Barros <dbajrs@noibe.com> (dbarjs.noibe.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mowekabanas/base/issues"
