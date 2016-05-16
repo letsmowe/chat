@@ -1,0 +1,74 @@
+
+/* Chat Session */
+
+.ChatSession {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	max-height: 3.75em;
+}
+
+/* Chat Session inner */
+
+.ChatSession-inner {
+	background-color: #eeeeee;
+	-webkit-align-items: center;
+	align-items: center;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+	min-height: 100%;
+	padding: 0 1em;
+	width: 100%;
+}
+
+.SessionButton {
+	-webkit-align-items: center;
+	align-items: center;
+	border: solid 2px #ff3d00;
+	border-radius: 16px;
+	color: #ff3d00;
+	cursor: pointer;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-transition: all .3s;
+	-moz-transition: all .3s;
+	-ms-transition: all .3s;
+	-o-transition: all .3s;
+	transition: all .3s;
+	padding: 3px .5em;
+}
+
+.SessionButton:hover {
+	background-color: #ff3d00;
+	color: #ffffff;
+}
+
+.SessionButton span {
+	display: block;
+	font-size: .75em;
+	font-weight: 700;
+	line-height: 1;
+	text-transform: uppercase;
+}
+
+.SessionLogin,
+.Chat.is-online .SessionLogout {
+	display: block;
+}
+
+.SessionLogout,
+.Chat.is-online .SessionLogin {
+	display: none;
+}

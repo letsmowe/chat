@@ -1,0 +1,15 @@
+
+/* Chat Stage */
+
+.ChatStage {
+	position: relative;
+	padding: 1em;
+}
+
+.ChatStage-inner {
+	border: solid 2px #ff5722;
+	border-radius: 6px;
+	overflow-y: auto;
+	position: relative;
+	width: 100%;
+}

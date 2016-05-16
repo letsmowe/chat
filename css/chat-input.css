@@ -1,0 +1,86 @@
+
+/* Chat Input */
+
+.ChatInput {
+	-webkit-align-items: center;
+	align-items: center;
+	height: 100%;
+	-webkit-justify-content: center;
+	justify-content: center;
+	max-height: 6em;
+	padding: 0 1em 1em;
+}
+
+/* Chat Input Inner */
+
+.ChatInput-inner {
+	-webkit-align-items: center;
+	align-items: center;
+	/*border: solid 2px #ff5722;*/
+	border-radius: 6px;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	height: 100%;
+	width: 100%;
+}
+
+.ChatInputField,
+.ChatInputSubmit {
+	flex: 1;
+}
+
+.ChatInputField {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	height: 100%;
+	padding: 1em;
+	width: 100%;
+}
+
+.ChatInputField textarea {
+	background: none;
+	border: none;
+	color: #bf360c;
+	font-family: inherit;
+	height: auto;
+	min-height: 1em;
+	max-height: 100%;
+	width: 100%;
+}
+
+.ChatInputSubmit {
+	height: 100%;
+	max-width: 6em;
+	padding: 1em;
+	width: 100%;
+}
+
+.ChatInputSubmit button {
+	border: solid 1px #ff3d00;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	background: #ff3d00;
+	cursor: pointer;
+	font-family: inherit;
+	color: #ffffff;
+	height: 100%;
+	max-width: 6em;
+	-webkit-transition: all .3s;
+	-moz-transition: all .3s;
+	-ms-transition: all .3s;
+	-o-transition: all .3s;
+	transition: all .3s;
+	width: 100%;
+}
+
+.ChatInputSubmit button:hover {
+	border: solid 1px #dd2c00;
+	background: #dd2c00;
+}

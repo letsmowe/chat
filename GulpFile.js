@@ -84,6 +84,7 @@ dist.js = {
 // CSS
 
 gulp.task('css', function() {
+	console.log('sadfasdfasfd');
 	gulp.src(source.css.location + source.css.content)
 		.pipe(concatCSS(_PROJECTNAME + '.css'))
 		.pipe(gulp.dest(dist.css.location))
@@ -103,14 +104,14 @@ gulp.task('css-watch', ['css'], function () {
 gulp.task('js', function() {
 	gulp.src(source.js.location + source.js.content)
 		.pipe(concat(_PROJECTNAME + '.js'))
-		.pipe(gulp.dest(dist.js.location))
-		.pipe(uglify({
-			preserveComments: 'some'
-		}))
-		.pipe(rename({
-			extname: '.min.js'
-		}))
 		.pipe(gulp.dest(dist.js.location));
+		//.pipe(uglify({
+		//	preserveComments: 'some'
+		//}))
+		//.pipe(rename({
+		//	extname: '.min.js'
+		//}))
+		//.pipe(gulp.dest(dist.js.location));
 });
 
 gulp.task('js-watch', ['js'], function () {

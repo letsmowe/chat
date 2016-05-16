@@ -1,0 +1,15 @@
+
+/* Chat Session Info */
+
+.ChatSessionInfo {
+	color: #d50000;
+	-webkit-transition: all .6s;
+	-moz-transition: all .6s;
+	-ms-transition: all .6s;
+	-o-transition: all .6s;
+	transition: all .6s;
+}
+
+.Chat.is-online .ChatSessionInfo {
+	color: #00c853;
+}
