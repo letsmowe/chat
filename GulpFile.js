@@ -1,4 +1,4 @@
-const _PROJECTNAME = 'balsa-app';
+const _PROJECTNAME = 'chat';
 
 var gulp = require('gulp'),
 	concat = require('gulp-concat'),
