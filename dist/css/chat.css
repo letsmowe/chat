@@ -1,0 +1,316 @@
+/*!
+ * Mowe {ProjectName} Project v0.0.0 (http://letsmowe.org/)
+ * Copyright 2013-2015 Mowe Developers
+ * Licensed under MIT (https://github.com/mowekabanas/base/blob/master/LICENSE)
+*/
+/* Chat Input */
+
+.ChatInput {
+  -webkit-align-items: center;
+  align-items: center;
+  height: 100%;
+  -webkit-justify-content: center;
+  justify-content: center;
+  max-height: 6em;
+  padding: 0 1em 1em;
+}
+
+/* Chat Input Inner */
+
+.ChatInput-inner {
+  -webkit-align-items: center;
+  align-items: center;
+  /*border: solid 2px #ff5722;*/
+  border-radius: 6px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.ChatInputField,
+.ChatInputSubmit {
+  flex: 1;
+}
+
+.ChatInputField {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  height: 100%;
+  padding: 1em;
+  width: 100%;
+}
+
+.ChatInputField textarea {
+  background: none;
+  border: none;
+  color: #bf360c;
+  font-family: inherit;
+  height: auto;
+  min-height: 1em;
+  max-height: 100%;
+  width: 100%;
+}
+
+.ChatInputSubmit {
+  height: 100%;
+  max-width: 6em;
+  padding: 1em;
+  width: 100%;
+}
+
+.ChatInputSubmit button {
+  border: solid 1px #ff3d00;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background: #ff3d00;
+  cursor: pointer;
+  font-family: inherit;
+  color: #ffffff;
+  height: 100%;
+  max-width: 6em;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -ms-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+  width: 100%;
+}
+
+.ChatInputSubmit button:hover {
+  border: solid 1px #dd2c00;
+  background: #dd2c00;
+}
+/* Chat Message Item */
+
+.ChatMessageItem {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  margin: 0 1em 1em 0;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+/* Chat Message Item content */
+
+.ChatMessageItem-content {
+  border-radius: 4px;
+  background-color: #ff5722;
+  position: relative;
+  display: block;
+  margin-right: .75em;
+  max-width: 12em;
+  padding: .5em;
+}
+
+.ChatMessageItem-content:after {
+  position: absolute;
+  left: 100%;
+  top: 4px;
+  content: '';
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 4px solid #ff5722;
+  height: 0;
+  width: 0;
+}
+
+/* Chat Message Item content span */
+
+.ChatMessageItem-content span {
+  color: #ffffff;
+  display: block;
+  font-size: .875em;
+  font-weight: 400;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+/* Chat Message Item sender */
+
+.ChatMessageItem-sender {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: #bdbdbd;
+  display: block;
+  width: 2.25em;
+  height: 2.25em;
+}
+
+/* Chat Message Item media width */
+
+@media (min-width: 21em) {
+  .ChatMessageItem-content {
+    max-width: 14em;
+  }
+}
+
+@media (min-width: 48em) {
+  .ChatMessageItem-content {
+    max-width: 24em;
+  }
+
+  .ChatMessageItem-content span {
+    font-size: 1em;
+  }
+}
+/* Chat Messages */
+
+.ChatMessages {
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: column;
+  flex-flow: column;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+  height: auto;
+  padding-top: 1em;
+  position: absolute;
+  width: 100%;
+}
+/* Chat Session Info */
+
+.ChatSessionInfo {
+  color: #d50000;
+  -webkit-transition: all .6s;
+  -moz-transition: all .6s;
+  -ms-transition: all .6s;
+  -o-transition: all .6s;
+  transition: all .6s;
+}
+
+.Chat.is-online .ChatSessionInfo {
+  color: #00c853;
+}
+/* Chat Session */
+
+.ChatSession {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  max-height: 3.75em;
+}
+
+/* Chat Session inner */
+
+.ChatSession-inner {
+  background-color: #eeeeee;
+  -webkit-align-items: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  min-height: 100%;
+  padding: 0 1em;
+  width: 100%;
+}
+
+.SessionButton {
+  -webkit-align-items: center;
+  align-items: center;
+  border: solid 2px #ff3d00;
+  border-radius: 16px;
+  color: #ff3d00;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -ms-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+  padding: 3px .5em;
+}
+
+.SessionButton:hover {
+  background-color: #ff3d00;
+  color: #ffffff;
+}
+
+.SessionButton span {
+  display: block;
+  font-size: .75em;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.SessionLogin,
+.Chat.is-online .SessionLogout {
+  display: block;
+}
+
+.SessionLogout,
+.Chat.is-online .SessionLogin {
+  display: none;
+}
+/* Chat Stage */
+
+.ChatStage {
+  position: relative;
+  padding: 1em;
+}
+
+.ChatStage-inner {
+  border: solid 2px #ff5722;
+  border-radius: 6px;
+  overflow-y: auto;
+  position: relative;
+  width: 100%;
+}
+/* Chat */
+
+.Chat {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: column;
+  flex-flow: column;
+  height: 100vh;
+  font-weight: 300;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Chat Input and Stage */
+
+.ChatInput,
+.ChatSession,
+.ChatStage {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex: 1;
+}
