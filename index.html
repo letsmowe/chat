@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" class="roboto">
 <meta charset="UTF-8">
-<title>Balsa App</title>
+<title>Kabana's Chat</title>
 <meta name="viewport"
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
 <script src="dist/js/villa.min.js"></script>
@@ -17,8 +17,15 @@
 <style>
 
 	.BalsaApp {
-		-webkit-align-items: center;
-		align-items: center;
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		overflow: hidden;
+	}
+
+	.Chat {
 		display: -webkit-box;
 		display: -moz-box;
 		display: -ms-flexbox;
@@ -26,13 +33,38 @@
 		display: flex;
 		-webkit-flex-flow: column;
 		flex-flow: column;
-		padding: 0 1em;
 		height: 100vh;
+		font-weight: 300;
+		overflow: hidden;
 		width: 100%;
-		text-align: center;
 	}
 
-	.Header {
+	/* Chat Input and Stage */
+
+	.ChatInput,
+	.ChatSession,
+	.ChatStage {
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		flex: 1;
+	}
+
+	/* Chat Session */
+
+	.ChatSession {
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		max-height: 3.75em;
+	}
+
+	.ChatSession-inner {
+		background-color: #eeeeee;
 		-webkit-align-items: center;
 		align-items: center;
 		display: -webkit-box;
@@ -42,138 +74,431 @@
 		display: flex;
 		-webkit-justify-content: space-between;
 		justify-content: space-between;
+		height: 100%;
+		padding: 0 1em;
 		width: 100%;
-		height: 6em;
 	}
 
-	.SessionLogout,
-	.BalsaApp.is-online .SessionLogin {
-		display: none;
+	.Session {
+		color: #d50000;
+		-webkit-transition: all .6s;
+		-moz-transition: all .6s;
+		-ms-transition: all .6s;
+		-o-transition: all .6s;
+		transition: all .6s;
+	}
+
+	.Chat.is-online .Session {
+		color: #00c853;
+	}
+
+	.SessionButton {
+		-webkit-align-items: center;
+		align-items: center;
+		border: solid 2px #ff3d00;
+		border-radius: 16px;
+		color: #ff3d00;
+		cursor: pointer;
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-justify-content: center;
+		justify-content: center;
+		-webkit-transition: all .3s;
+		-moz-transition: all .3s;
+		-ms-transition: all .3s;
+		-o-transition: all .3s;
+		transition: all .3s;
+		padding: 3px .5em;
+	}
+
+	.SessionButton:hover {
+		background-color: #ff3d00;
+		color: #ffffff;
+	}
+
+	.SessionButton span {
+		display: block;
+		font-size: .75em;
+		font-weight: 700;
+		line-height: 1;
+		text-transform: uppercase;
 	}
 
 	.SessionLogin,
-	.BalsaApp.is-online .SessionLogout {
+	.Chat.is-online .SessionLogout {
 		display: block;
+	}
+
+	.SessionLogout,
+	.Chat.is-online .SessionLogin {
+		display: none;
+	}
+
+	/* Chat Input */
+
+	.ChatInput {
+		-webkit-align-items: center;
+		align-items: center;
+		height: 100%;
+		-webkit-justify-content: center;
+		justify-content: center;
+		max-height: 6em;
+		padding: 0 1em 1em;
+	}
+
+	.ChatInput-inner {
+		-webkit-align-items: center;
+		align-items: center;
+		/*border: solid 2px #ff5722;*/
+		border-radius: 6px;
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		height: 100%;
+		width: 100%;
+	}
+
+	.ChatInputField,
+	.ChatInputSubmit {
+		flex: 1;
+	}
+
+	.ChatInputField {
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		height: 100%;
+		padding: 1em;
+		width: 100%;
+	}
+
+	.ChatInputField textarea {
+		background: none;
+		border: none;
+		color: #bf360c;
+		font-family: inherit;
+		height: auto;
+		min-height: 1em;
+		max-height: 100%;
+		width: 100%;
+	}
+
+	.ChatInputSubmit {
+		height: 100%;
+		max-width: 6em;
+		padding: 1em;
+		width: 100%;
+	}
+
+	.ChatInputSubmit button {
+		border: solid 1px #ff3d00;
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+		background: #ff3d00;
+		cursor: pointer;
+		font-family: inherit;
+		color: #ffffff;
+		height: 100%;
+		max-width: 6em;
+		-webkit-transition: all .3s;
+		-moz-transition: all .3s;
+		-ms-transition: all .3s;
+		-o-transition: all .3s;
+		transition: all .3s;
+		width: 100%;
+	}
+
+	.ChatInputSubmit button:hover {
+		border: solid 1px #dd2c00;
+		background: #dd2c00;
+	}
+
+	/* Chat Stage */
+
+	.ChatStage {
+		position: relative;
+		padding: 1em;
+	}
+
+	.ChatStage-inner {
+		border: solid 2px #ff5722;
+		border-radius: 6px;
+		overflow-y: auto;
+		position: relative;
+		width: 100%;
+	}
+
+	.ChatMessages {
+		-webkit-align-items: flex-end;
+		align-items: flex-end;
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-flex-flow: column;
+		flex-flow: column;
+		-webkit-justify-content: flex-end;
+		justify-content: flex-end;
+		height: auto;
+		padding-top: 1em;
+		position: absolute;
+		width: 100%;
+	}
+
+	.ChatMessageItem {
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		margin: 0 1em 1em 0;
+		-webkit-justify-content: flex-end;
+		justify-content: flex-end;
+		width: 100%;
+	}
+
+	.ChatMessageItem-content {
+		border-radius: 4px;
+		background-color: #ff5722;
+		position: relative;
+		display: block;
+		margin-right: .75em;
+		max-width: 12em;
+		padding: .5em;
+	}
+
+	.ChatMessageItem-content:after {
+		position: absolute;
+		left: 100%;
+		top: 4px;
+		content: '';
+		border-top: 4px solid transparent;
+		border-bottom: 4px solid transparent;
+		border-left: 4px solid #ff5722;
+		height: 0;
+		width: 0;
+	}
+
+	.ChatMessageItem-content span {
+		color: #ffffff;
+		display: block;
+		font-size: .875em;
+		font-weight: 400;
+		width: 100%;
+		word-wrap: break-word;
+	}
+
+	.ChatMessageItem-sender {
+		position: relative;
+		overflow: hidden;
+		border-radius: 4px;
+		background-color: #bdbdbd;
+		display: block;
+		width: 2.25em;
+		height: 2.25em;
+	}
+
+	@media (min-width: 21em) {
+
+		.ChatMessageItem-content {
+			max-width: 14em;
+		}
+
+	}
+
+	@media (min-width: 48em) {
+
+		.ChatMessageItem-content {
+			max-width: 24em;
+		}
+
+		.ChatMessageItem-content span {
+			font-size: 1em;
+		}
+
 	}
 
 </style>
 
 <body>
 
-<script>
+<main id="main" class="BalsaApp">
 
-//	window.fbAsyncInit = function() {
-//		FB.init({
-//			appId      : '238627553164073',
-//			xfbml      : true,
-//			version    : 'v2.6'
-//		});
-//	};
-//
-//	(function(d, s, id){
-//		var js, fjs = d.getElementsByTagName(s)[0];
-//		if (d.getElementById(id)) {return;}
-//		js = d.createElement(s); js.id = id;
-//		js.src = "//connect.facebook.net/en_US/sdk.js";
-//		fjs.parentNode.insertBefore(js, fjs);
-//	}(document, 'script', 'facebook-jssdk'));
+	<div id="chat" class="Chat grey-100">
 
-</script>
+		<div id="chatSession" class="ChatSession">
 
-<main id="main" class="BalsaApp font-green">
+			<div class="ChatSession-inner">
 
-	<header class="Header">
+				<div class="SessionOptions">
 
-		<img src="" alt="" id="session-img" class="SessionImage"/>
+					<button id="login" class="SessionButton SessionLogin"><span>Entrar</span></button>
+					<button id="logout" class="SessionButton SessionLogout"><span>Sair</span></button>
 
-		<div id="session" class="Session"></div>
+				</div>
 
-		<button id="login" class="SessionLogin">login</button>
-		<button id="logout" class="SessionLogout">logout</button>
+				<div id="session" class="Session"></div>
 
-	</header>
+			</div>
 
-	<span id="lblCount"></span>
-	<input type="number" id="inCount"/>
+		</div>
 
-	<span id="lblName"></span>
-	<input type="text" id="inName"/>
+		<div id="chatStage" class="ChatStage">
+
+			<div id="chatStageInner" class="ChatStage-inner grey-200">
+
+				<div class="ChatMessages" id="chatMessages"></div>
+
+			</div>
+
+		</div>
+
+		<div class="ChatInput">
+
+			<div class="ChatInput-inner grey-300">
+
+				<div class="ChatInputField" id="chatInputField"></div>
+
+				<div class="ChatInputSubmit" id="chatInputSubmit"></div>
+
+			</div>
+
+		</div>
+
+	</div>
 
 </main>
 
-
-<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js" id="firebaseScript"></script>
 
 <script>
 
+	var audio = new Audio('audio/music_marimba_chord.wav');
+
+	var chat = {
+		viewport: document.getElementById('chat'),
+		session: {
+			viewport: document.getElementById('session')
+		}
+	};
+
+	var chatInputField = {};
+	chatInputField.viewport = document.getElementById('chatInputField');
+	chatInputField.textArea = document.createElement('textarea');
+	chatInputField.textArea.placeholder = 'Digite a sua mensagem aqui';
+	chatInputField.viewport.appendChild(chatInputField.textArea);
+	chatInputField.textArea.addEventListener('focus', function() {
+		chatInputField.textArea.hasFocus = true;
+	});
+	chatInputField.textArea.addEventListener('blur', function() {
+		chatInputField.textArea.hasFocus = false;
+	});
+
+	var chatInputSubmit = {};
+	chatInputSubmit.viewport = document.getElementById('chatInputSubmit');
+	chatInputSubmit.button = document.createElement('button');
+	chatInputSubmit.button.innerText = 'Enviar';
+	chatInputSubmit.viewport.appendChild(chatInputSubmit.button);
+
+	var chatMessages = {};
+	chatMessages.viewport = document.getElementById('chatMessages');
+	chatMessages.items = [];
+
+	var chatStage = {
+		viewport: document.getElementById('chatStage'),
+		inner: {
+			viewport: document.getElementById('chatStageInner')
+		}
+	};
+
+	var buildChatMessageItem = function (messageData) {
+
+		var messageItem = document.createElement('div');
+		messageItem.className = 'ChatMessageItem';
+
+		var messageContent = document.createElement('div');
+		messageContent.className = 'ChatMessageItem-content';
+
+		var span = document.createElement('span');
+		span.innerHTML = messageData.value;
+
+		messageContent.appendChild(span);
+
+		var messageSender = document.createElement('div');
+		messageSender.className = 'ChatMessageItem-sender';
+
+		messageItem.appendChild(messageContent);
+		messageItem.appendChild(messageSender);
+
+		if (messageData.user)
+			ref.child('users/' + messageData.user).on('value', function (snap) {
+
+				if (snap.val())
+				{
+					var img = document.createElement('img');
+					img.src = snap.val().profileImageURL;
+					messageSender.appendChild(img);
+				}
+
+			});
+
+		return messageItem;
+
+	};
+
 	// Firebase 'connection'
-	var rootRef = new Firebase('https://balsa-app-test.firebaseio.com');
-	var authData = rootRef.getAuth();
+	var ref = new Firebase('https://balsa-app-test.firebaseio.com');
+	var chatRef = ref.child('chat');
 
-	function startCount() {
+	var userRef = false;
 
-		var countRef = rootRef.child('count');
+	var goOnline = function (authData) {
 
-		countRef.on('value', function (snap) {
+		console.log("User " + authData.uid + " is logged in with " + authData.provider);
+		ref.child("users").child(authData.uid).set(authData.facebook);
+		userRef = ref.child('users/' + authData.uid);
+		chat.viewport.classList.add('is-online');
 
-			document.getElementById('lblCount').innerHTML = snap.val();
+		chat.session.viewport.innerHTML = 'você está online';
 
-		});
-		
-		document.getElementById('inCount').addEventListener('input', function () {
+		chat.session.user = authData;
 
-			var data = parseInt(this.value);
+	};
 
-			countRef.set(data);
+	var goOffline = function (authData) {
 
-		});
+		console.log("User is logged out");
+		chat.viewport.classList.remove('is-online');
+		chat.session.viewport.innerHTML = 'você está offline';
 
-	}
+		chat.session.user = false;
 
-	function startName() {
+	};
 
-		var nameRef = rootRef.child('name');
-
-		nameRef.on('value', function (snap) {
-
-			document.getElementById('lblName').innerHTML = snap.val();
-
-		});
-
-		document.getElementById('inName').addEventListener('input', function () {
-
-			var data = this.value;
-			nameRef.set(data);
-
-		});
-
-	}
-
-	rootRef.onAuth(function (authData) {
+	ref.onAuth(function (authData) {
 
 		if (authData) {
 
-			console.log("User " + authData.uid + " is logged in with " + authData.provider);
-
-			rootRef.child("users").child(authData.uid).set(authData.facebook);
-			rootRef.child("users").child(authData.uid).child('admin').set(true);
-
-			document.getElementById('session').innerHTML = 'Olá ' + authData.facebook.displayName;
-			document.getElementById('session-img').src = authData.facebook.profileImageURL;
-			document.getElementById('main').classList.add('is-online');
+			goOnline(authData);
 
 		} else {
 
-			console.log("User is logged out");
-
-			document.getElementById('main').classList.remove('is-online');
-			document.getElementById('session').innerHTML = 'você está offline ';
+			goOffline(authData);
 
 		}
 
 		document.getElementById('login').addEventListener('click', function () {
 
-			rootRef.authWithOAuthRedirect("facebook", function(error, authData) {
+			ref.authWithOAuthRedirect("facebook", function(error, authData) {
 
 				if (error) {
 
@@ -182,7 +507,7 @@
 				} else {
 
 					console.log("Authenticated successfully with payload:", authData);
-					document.getElementById('main').classList.add('is-online');
+					document.getElementById('chat').classList.add('is-online');
 
 				}
 
@@ -194,26 +519,79 @@
 
 		document.getElementById('logout').addEventListener('click', function () {
 
-			rootRef.unauth();
+			ref.unauth();
+
+			goOffline(ref.getAuth);
 
 		});
 
-		startCount();
-		startName();
+	});
+
+	chatRef.on('child_added', function (snap) {
+
+		var chatMessageItem = buildChatMessageItem(snap.val());
+
+		chatMessages.items.push(chatMessageItem);
+		chatMessages.viewport.appendChild(chatMessageItem);
+
+		chatStage.inner.viewport.scrollTop = chatStage.inner.viewport.scrollHeight;
+
+		audio.pause();
+		audio.currentTime = 0;
+
+		audio.play();
 
 	});
 
-	// find a suitable name based on the meta info given by each provider
-	function getName(authData) {
-		switch(authData.provider) {
-			case 'password':
-				return authData.password.email.replace(/@.*/, '');
-			case 'twitter':
-				return authData.twitter.displayName;
-			case 'facebook':
-				return authData.facebook.displayName;
+	var messageSend = function () {
+
+		var value = chatInputField.textArea.value.trim();
+
+		if (value.length && value.length < 1024) {
+
+			// create push
+			var newMessage = chatRef.push();
+
+			// set the push value
+			newMessage.set({
+				value: value,
+				user: chat.session.user.uid || false
+			});
+
+			// set text area value to empty
+			chatInputField.textArea.value = '';
+			chatInputField.textArea.focus();
+
 		}
-	}
+
+	};
+
+	chatInputSubmit.button.addEventListener('click', messageSend);
+
+	var shiftActive = false;
+
+	window.addEventListener('keydown', function (event) {
+
+		if (event.keyCode == 16)
+			shiftActive = true;
+
+		if (event.keyCode == 13)
+			if (!shiftActive)
+				if (chatInputField.textArea.hasFocus) {
+					messageSend();
+					setTimeout(function () {
+						chatInputField.textArea.value = '';
+					}, 0);
+				}
+
+	});
+
+	window.addEventListener('keyup', function (event) {
+
+		if (event.keyCode == 16)
+			shiftActive = false;
+
+	});
 
 </script>
 
