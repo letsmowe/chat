@@ -1,7 +1,7 @@
 {
-  "name": "balsa-app",
+  "name": "chat",
   "version": "1.0.0",
-  "description": "Mowe Balsa App",
+  "description": "Mowe Chat App",
   "main": "GulpFile.js",
   "devDependencies": {
     "browser-sync": "^2.12.5",
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mowekabanas/base.git"
+    "url": "https://github.com/letsmowe/chat.git"
   },
   "keywords": [
     "letsmowe",
@@ -32,6 +32,6 @@
   "author": "Eduardo Barros <dbajrs@noibe.com> (dbarjs.noibe.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mowekabanas/base/issues"
+    "url": "https://github.com/letsmowe/chat/issues"
   }
 }
