@@ -331,46 +331,42 @@
 
 <body>
 
-<main id="main" class="BalsaApp">
+<main id="chat" class="Chat">
 
-	<div id="chat" class="Chat grey-100">
+	<div id="chatSession" class="ChatSession">
 
-		<div id="chatSession" class="ChatSession">
+		<div class="ChatSession-inner">
 
-			<div class="ChatSession-inner">
+			<div class="SessionOptions">
 
-				<div class="SessionOptions">
-
-					<button id="login" class="SessionButton SessionLogin"><span>Entrar</span></button>
-					<button id="logout" class="SessionButton SessionLogout"><span>Sair</span></button>
-
-				</div>
-
-				<div id="session" class="Session"></div>
+				<button id="login" class="SessionButton SessionLogin"><span>Entrar</span></button>
+				<button id="logout" class="SessionButton SessionLogout"><span>Sair</span></button>
 
 			</div>
+
+			<div id="session" class="Session"></div>
 
 		</div>
 
-		<div id="chatStage" class="ChatStage">
+	</div>
 
-			<div id="chatStageInner" class="ChatStage-inner grey-200">
+	<div id="chatStage" class="ChatStage">
 
-				<div class="ChatMessages" id="chatMessages"></div>
+		<div id="chatStageInner" class="ChatStage-inner grey-200">
 
-			</div>
+			<div class="ChatMessages" id="chatMessages"></div>
 
 		</div>
 
-		<div class="ChatInput">
+	</div>
 
-			<div class="ChatInput-inner grey-300">
+	<div class="ChatInput">
 
-				<div class="ChatInputField" id="chatInputField"></div>
+		<div class="ChatInput-inner grey-300">
 
-				<div class="ChatInputSubmit" id="chatInputSubmit"></div>
+			<div class="ChatInputField" id="chatInputField"></div>
 
-			</div>
+			<div class="ChatInputSubmit" id="chatInputSubmit"></div>
 
 		</div>
 
